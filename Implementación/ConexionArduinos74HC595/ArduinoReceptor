@@ -1,0 +1,34 @@
+// C++ code
+// Arduino Receptor
+/*#define uno 1
+#define dos 2
+#define tres 3
+#define cuat 4
+#define cinc 5
+#define six 6
+#define sept 7
+#define oct 8*/
+int arr[8]={0};
+int aux=0;
+void setup()
+{
+  Serial.begin(9600);
+  for (int i=2;i<10;i++){
+    pinMode(i,INPUT);
+  }
+}
+
+void loop()
+{
+  delay (1000);
+  for (int i=2;i<10;i++){
+  	arr[i-2]=digitalRead(i);
+  }
+  if(aux == 0){
+  int number=0;
+  for(int j=0;j<8;j++){
+  	number=number*2+arr[j]; 
+  }
+  Serial.print(number);
+  aux=1;}  
+}

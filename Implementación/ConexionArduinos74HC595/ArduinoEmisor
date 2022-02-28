@@ -1,0 +1,36 @@
+//Arduino Emisor
+// C++ code
+//
+#define ORCLK 8
+#define SRCLK 7
+#define num 9
+int aux1=0;
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(num, OUTPUT);
+  pinMode(ORCLK, OUTPUT);
+  pinMode(SRCLK, OUTPUT);
+}
+
+void loop()
+{
+  int number=108; //Menor de 255
+  if(aux1==0){
+    ledLineWrite(number);
+    aux1=1;}
+}
+
+void ledLineWrite(int Sf1)
+{
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf8); 
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf7);
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf6);
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf5);
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf4);
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf3);
+   //shiftOut(SER, SRCLK, MSBFIRST, Sf2);
+   shiftOut(num, SRCLK, MSBFIRST, Sf1);
+   digitalWrite(ORCLK, HIGH);
+   digitalWrite(ORCLK, LOW);
+}  
